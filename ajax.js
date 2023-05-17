@@ -62,4 +62,4 @@ $('#register-form').submit(function(e) {
             console.error('Ajax request failed. Status: ' + xhr.status + ' ' + error);
         }
     });
-  });
+});

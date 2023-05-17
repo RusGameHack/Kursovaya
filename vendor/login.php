@@ -35,7 +35,8 @@
             "name" => $user['name'],
             "surname" => $user['surname'],
             "avatar" => $user['avatar'],
-            "login" => $user['login']
+            "login" => $user['login'],
+            "isAdmin" => $user['isAdmin']
         ];
         $response = [
             "status" => true

@@ -8,7 +8,8 @@
     $login = $_POST['login'];
     $password = $_POST['password'];
     $password_confirm = $_POST['password_confirm'];
-
+    $isAdmin = $_POST['isAdmin'];
+    
     $check_login = mysqli_query($connect, "SELECT * FROM `users` WHERE `login` = '$login'");
     if (mysqli_num_rows($check_login) > 0) {
         $response = [
@@ -36,6 +37,9 @@
     if ($password_confirm === '') {
         $error_fields[] = 'password_confirm';
     }
+    if ($isAdmin === '') {
+        $error_fields[] = 'isAisAdmin';
+    }
     if (!$_FILES['avatar']) {
         $error_fields[] = 'avatar';
     }
@@ -60,7 +64,7 @@
             echo json_encode($response);
         }
         $password = md5($password);
-        mysqli_query($connect, "INSERT INTO `users` (`id`, `name`, `surname`, `login`, `password`, `avatar`) VALUES (NULL, '$name', '$surname', '$login', '$password', '$path');");
+        mysqli_query($connect, "INSERT INTO `users` (`id`, `name`, `surname`, `login`, `password`, `avatar`, `isAdmin`) VALUES (NULL, '$name', '$surname', '$login', '$password', '$path', '$isAdmin');");
         $response = [
             "status" => true,
             "message" => "Регистрация прошла успешно!",
